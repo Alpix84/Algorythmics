@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: array
       value: 
       objectReference: {fileID: 4441956648902574633}
+    - target: {fileID: 7959270842736668520, guid: 148d58946c7b2df47a1bea0d75297e40, type: 3}
+      propertyPath: parentObject
+      value: 
+      objectReference: {fileID: 4441956648902574633}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 148d58946c7b2df47a1bea0d75297e40, type: 3}
 --- !u!224 &6039329990188161679 stripped
@@ -310,6 +314,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7959270842736668520, guid: 148d58946c7b2df47a1bea0d75297e40, type: 3}
       propertyPath: array
+      value: 
+      objectReference: {fileID: 4441956648902574633}
+    - target: {fileID: 7959270842736668520, guid: 148d58946c7b2df47a1bea0d75297e40, type: 3}
+      propertyPath: parentObject
       value: 
       objectReference: {fileID: 4441956648902574633}
     m_RemovedComponents: []
@@ -430,6 +438,10 @@ PrefabInstance:
       propertyPath: array
       value: 
       objectReference: {fileID: 4441956648902574633}
+    - target: {fileID: 7959270842736668520, guid: 148d58946c7b2df47a1bea0d75297e40, type: 3}
+      propertyPath: parentObject
+      value: 
+      objectReference: {fileID: 4441956648902574633}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 148d58946c7b2df47a1bea0d75297e40, type: 3}
 --- !u!224 &6039329989126468402 stripped
@@ -536,6 +548,10 @@ PrefabInstance:
       propertyPath: array
       value: 
       objectReference: {fileID: 4441956648902574633}
+    - target: {fileID: 7959270842736668520, guid: 148d58946c7b2df47a1bea0d75297e40, type: 3}
+      propertyPath: parentObject
+      value: 
+      objectReference: {fileID: 4441956648902574633}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 148d58946c7b2df47a1bea0d75297e40, type: 3}
 --- !u!224 &6039329989608310842 stripped
@@ -640,6 +656,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7959270842736668520, guid: 148d58946c7b2df47a1bea0d75297e40, type: 3}
       propertyPath: array
+      value: 
+      objectReference: {fileID: 4441956648902574633}
+    - target: {fileID: 7959270842736668520, guid: 148d58946c7b2df47a1bea0d75297e40, type: 3}
+      propertyPath: parentObject
       value: 
       objectReference: {fileID: 4441956648902574633}
     m_RemovedComponents: []

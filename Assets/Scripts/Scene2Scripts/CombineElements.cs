@@ -61,22 +61,31 @@ public class CombineElements : MonoBehaviour,IEndDragHandler, IBeginDragHandler,
 
         if (mouseButtonReleased)
         {
-            if (itemPlacedInArray(thisGameObjectName, collisionGameObjectName,collision))
-            {
+            //if (itemPlacedInArray(thisGameObjectName, collisionGameObjectName,collision))
+            //{
                 Debug.Log(thisGameObjectName);
                 transform.SetParent(collision.transform);
-            }
+                //}
         }
     }
 
-    private bool itemPlacedInArray(string thisGameObjectName, string collisionGameObjectName,Collider2D collision)
+    /*private bool itemPlacedInArray(string thisGameObjectName, string collisionGameObjectName,Collider2D collision)
     {
-        collisionGameObjectName = collisionGameObjectName.Remove(collisionGameObjectName.Length - 1);
+        Debug.Log(collisionGameObjectName.Length);
+        if (collisionGameObjectName.Length > 10)
+        {
+            collisionGameObjectName = collisionGameObjectName.Remove(collisionGameObjectName.Length - 1);
+        }
         if (thisGameObjectName == "ArrayElement(Clone)" && collisionGameObjectName == "ArrayPlace")
         {
             return true;
         }
+
+        if (thisGameObjectName == "ArrayElement(Clone)" && collisionGameObjectName == "Value")
+        {
+            return true;
+        }
         return false;
-    }
+    }*/
 
 }

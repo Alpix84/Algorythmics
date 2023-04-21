@@ -12,6 +12,9 @@ public class NewArray : MonoBehaviour, IPointerDownHandler
     private BoxCollider boxCollider;
     private double arrayLength;
 
+    [SerializeField] private int collectedNumber = 0;
+    private int clickCount = 0;
+
     public void OnPointerDown(PointerEventData eventData)
     {
         UI_Blocker.Show_Static();
@@ -24,10 +27,19 @@ public class NewArray : MonoBehaviour, IPointerDownHandler
                 UI_Blocker.Hide_Static();
             },
             (string InputText) => 
-            { 
-                Debug.Log("OK! " + InputText);
-                CreateNewArray(int.Parse(InputText));
-                UI_Blocker.Hide_Static();
+            {
+                if (clickCount != collectedNumber)
+                {
+                    Debug.Log("OK! " + InputText);
+                    CreateNewArray(int.Parse(InputText));
+                    UI_Blocker.Hide_Static();
+                    clickCount++;
+                }
+                else
+                {
+                    Debug.Log("MAX ITEMS REACHED!");
+                    UI_Blocker.Hide_Static();
+                }
             }
         );
     }

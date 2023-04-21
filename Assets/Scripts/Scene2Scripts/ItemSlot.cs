@@ -6,14 +6,14 @@ using UnityEngine.EventSystems;
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
 
-    [SerializeField] private RectTransform array;
+    [SerializeField] private RectTransform parentObject;
 
     public void OnDrop(PointerEventData eventData) 
     {
         Debug.Log("OnDrop");
         if (eventData.pointerDrag != null)
         {
-            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = array.anchoredPosition + GetComponent<RectTransform>().anchoredPosition;
+            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = parentObject.anchoredPosition + GetComponent<RectTransform>().anchoredPosition;
         }
 
     }
