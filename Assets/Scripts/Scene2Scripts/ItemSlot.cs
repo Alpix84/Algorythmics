@@ -15,5 +15,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         {
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = array.anchoredPosition + GetComponent<RectTransform>().anchoredPosition;
         }
+
     }
 }
