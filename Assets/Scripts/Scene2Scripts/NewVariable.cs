@@ -11,8 +11,9 @@ public class NewVariable : MonoBehaviour,IPointerDownHandler
    [SerializeField] private GameObject stringPrefab;
    [SerializeField] private GameObject boolPrefab;
    [SerializeField] private UI_InputWindowVariable inputWindow;
-   private BoxCollider boxCollider;
+   [SerializeField] private UI_ErrorPopup errorPopup;
    [SerializeField] private int collectedNumber;
+   private BoxCollider boxCollider;
    private int clickCount = 0;
    public List<KeyValuePair<string,string>> usedVariableNames = new();
 
@@ -29,87 +30,72 @@ public class NewVariable : MonoBehaviour,IPointerDownHandler
          },
          (string inputText,string variableType) =>
          {
-            if (clickCount < collectedNumber)
+            if (inputText.Length > 0)
             {
-               Debug.Log("OK!" + variableType);
-               CreateNewVariable(inputText,variableType);
-               UI_Blocker.Hide_Static();
-               clickCount++;
+               if (clickCount < collectedNumber)
+               {
+                  Debug.Log("OK!" + variableType);
+                  UI_Blocker.Hide_Static();
+                  CreateNewVariable(inputText, variableType);
+               }
+               else
+               {
+                  errorPopup.Show("Max items reached of this type!");
+                  Debug.Log("MAX ITEMS REACHED!");
+               }
             }
             else
             {
-               Debug.Log("MAX ITEMS REACHED!");
-               UI_Blocker.Hide_Static();
+               errorPopup.Show("Please give the variable a name!");
+               Debug.Log("NO VARIABLE NAME PROVIDED!");
             }
          }
       );
+   }
+   public void SetCollectedCount(int itemsCollected)
+   {
+      collectedNumber = itemsCollected;
    }
 
    private void CreateNewVariable(string inputName,string variableType)
    {
       GameObject newObject = new GameObject();
-      switch (variableType)
+      if (isExistingVariableName(inputName))
       {
-         case "INT":
-            if (isExistingVariableName(inputName))
-            {
-               Debug.Log("Incorrect variable name!");
-            }
-            else
-            {
+         errorPopup.Show("A variable with the same name already exists!");
+         Debug.Log("Incorrect variable name!");
+      }
+      else
+      {
+         clickCount++;
+         switch (variableType)
+         {
+            case "INT":
                newObject = Instantiate(intPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity, transform.parent);
                newObject.transform.Find("Name").GetComponent<TMP_Text>().text = inputName;
                usedVariableNames.Add(new KeyValuePair<string,string>(inputName,variableType));
-            }
-            break;
-         case "DOUBLE":
-            if (isExistingVariableName(inputName))
-            {
-               Debug.Log("Incorrect variable name!");
-            }
-            else
-            {
+               break;
+            case "DOUBLE":
                newObject = Instantiate(doublePrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity, transform.parent);
                newObject.transform.Find("Name").GetComponent<TMP_Text>().text = inputName;
                usedVariableNames.Add(new KeyValuePair<string,string>(inputName,variableType));
-            }
-            break;
-         case "FLOAT":
-            if (isExistingVariableName(inputName))
-            {
-               Debug.Log("Incorrect variable name!");
-            }
-            else
-            {
+               break;
+            case "FLOAT":
                newObject = Instantiate(floatPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity, transform.parent);
                newObject.transform.Find("Name").GetComponent<TMP_Text>().text = inputName;
                usedVariableNames.Add(new KeyValuePair<string,string>(inputName,variableType));
-            }
-            break;
-         case "STRING":
-            if (isExistingVariableName(inputName))
-            {
-               Debug.Log("Incorrect variable name!");
-            }
-            else
-            {
+               break;
+            case "STRING":
                newObject = Instantiate(stringPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity, transform.parent);
                newObject.transform.Find("Name").GetComponent<TMP_Text>().text = inputName;
                usedVariableNames.Add(new KeyValuePair<string,string>(inputName,variableType));
-            }
-            break;
-         case "BOOLEAN":
-            if (isExistingVariableName(inputName))
-            {
-               Debug.Log("Incorrect variable name!");
-            }
-            else
-            {
+               break;
+            case "BOOLEAN":
                newObject = Instantiate(boolPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity, transform.parent);
                newObject.transform.Find("Name").GetComponent<TMP_Text>().text = inputName;
                usedVariableNames.Add(new KeyValuePair<string,string>(inputName,variableType));
-            }
-            break;
+               break;
+         }
       }
    }
 

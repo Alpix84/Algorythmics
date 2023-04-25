@@ -9,6 +9,7 @@ public class ExistingVariable : MonoBehaviour,IPointerDownHandler
     [SerializeField] private GameObject variablePrefab;
     [SerializeField] private UI_InputWindow inputWindow;
     [SerializeField] public NewVariable newVariable;
+    [SerializeField] private UI_ErrorPopup errorPopup;
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -31,7 +32,7 @@ public class ExistingVariable : MonoBehaviour,IPointerDownHandler
                 }
                 else
                 {
-                    UI_Blocker.Hide_Static();
+                    errorPopup.Show("No variable found with given name!");
                     Debug.Log("No such variable!");
                 }
             }

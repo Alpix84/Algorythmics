@@ -18,6 +18,7 @@ public class UI_InputWindow : MonoBehaviour
         OKButton = transform.Find("OKButton").GetComponent<Button_UI>();
         CancelButton = transform.Find("CancelButton").GetComponent<Button_UI>();
         inputField = transform.Find("InputField").GetComponent<TMP_InputField>();
+        inputField.text = "";
 
         Hide();
     }
@@ -50,6 +51,7 @@ public class UI_InputWindow : MonoBehaviour
         {
             Hide();
             onOk(inputField.text);
+            inputField.text = "";
         };
 
         CancelButton.ClickFunc = () =>
